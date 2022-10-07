@@ -5,6 +5,8 @@ import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
 import OAuth from "../../components/OAuth";
 
+import forgotPasswordImg from "../../assets/svg/undraw_forgot_password.svg";
+
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
 
@@ -29,7 +31,7 @@ export default function ForgotPassword() {
       <div className="signin-wrapper">
         <div className="signin-img-wrapper">
           <img
-            src="https://images.unsplash.com/flagged/photo-1564767609342-620cb19b2357?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1373&q=80"
+            src={forgotPasswordImg}
             alt="key"
             className="w-full rounded-2xl"
           />

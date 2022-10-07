@@ -13,6 +13,8 @@ import { db } from "../../services/firebase";
 
 import OAuth from "../../components/OAuth";
 
+import signInImg from "../../assets/svg/undraw_login.svg";
+
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -62,11 +64,7 @@ export default function SignUp() {
       <h1 className="section-heading">Sign Up</h1>
       <div className="signin-wrapper">
         <div className="signin-img-wrapper">
-          <img
-            src="https://images.unsplash.com/flagged/photo-1564767609342-620cb19b2357?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1373&q=80"
-            alt="key"
-            className="w-full rounded-2xl"
-          />
+          <img src={signInImg} alt="key" className="w-full rounded-2xl" />
         </div>
         <div className="w-full md:w-[67%] lg:w-[40%] lg:ml-20">
           <form onSubmit={onSubmit}>

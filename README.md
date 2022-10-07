@@ -9,7 +9,7 @@ yarn
 
 **Run development server**
 ```bash
-yarn dev
+yarn start
 ```
 
 ## Packages

@@ -104,7 +104,7 @@ export default function Profile() {
   return (
     <>
       <section className="max-w-6xl mx-auto flex justify-center items-center flex-col">
-        <h1 className="text-3xl text-center mt-6 font-bold">My Profile</h1>
+        <h1 className="section-heading">My Profile</h1>
         <div className="w-full md:w-[50%] mt-6 px-3">
           <form>
             {/* Name Input */}
@@ -127,7 +127,7 @@ export default function Profile() {
               }`}
             />
 
-            <div className="flex justify-between whitespace-nowrap text-sm sm:text-lg mb-6">
+            <div className="text-wrapper-1 mb-6">
               <p className="flex items-center ">
                 Do you want to change your name?
                 <span
@@ -140,10 +140,7 @@ export default function Profile() {
                   {changeDetail ? "Apply change" : "Edit"}
                 </span>
               </p>
-              <p
-                onClick={onLogout}
-                className="text-blue-600 hover:text-blue-800 transition duration-200 ease-in-out cursor-pointer"
-              >
+              <p onClick={onLogout} className="signin-link-2 cursor-pointer">
                 Sign out
               </p>
             </div>

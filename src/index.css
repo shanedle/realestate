@@ -28,7 +28,40 @@ html::-webkit-scrollbar {
     @apply cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent;
   }
 
+  .section-heading {
+    @apply text-3xl text-center mt-6 font-bold;
+  }
+
+  .text-wrapper-1 {
+    @apply flex justify-between whitespace-nowrap text-sm sm:text-lg;
+  }
+
   .profile-input {
     @apply mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition ease-in-out;
+  }
+
+  .signin-wrapper {
+    @apply flex justify-center flex-wrap items-center px-6 py-12 max-w-6xl mx-auto;
+  }
+  .signin-img-wrapper {
+    @apply md:w-[67%] lg:w-[50%] mb-12 md:mb-6;
+  }
+  .signin-input {
+    @apply w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out;
+  }
+  .signin-link-1 {
+    @apply text-red-600 hover:text-red-700 transition duration-200 ease-in-out ml-1;
+  }
+  .signin-link-2 {
+    @apply text-blue-600 hover:text-blue-800 transition duration-200 ease-in-out;
+  }
+  .signin-button {
+    @apply w-full bg-blue-600 text-white px-7 py-3 text-sm font-medium uppercase rounded shadow-md hover:bg-blue-700 transition duration-150 ease-in-out hover:shadow-lg active:bg-blue-800;
+  }
+  .signin-or-wrapper {
+    @apply flex items-center  my-4 before:border-t before:flex-1 before:border-gray-300 after:border-t after:flex-1 after:border-gray-300;
+  }
+  .password-icon {
+    @apply absolute right-3 top-3 text-xl cursor-pointer;
   }
 }

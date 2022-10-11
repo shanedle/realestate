@@ -85,7 +85,7 @@ export default function Offers() {
       ) : listings && listings.length > 0 ? (
         <>
           <main>
-            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+            <ul className="home-listing-wrapper 2xl:grid-cols-5">
               {listings.map((listing) => (
                 <ListingItem
                   key={listing.id}

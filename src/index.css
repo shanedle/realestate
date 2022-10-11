@@ -5,41 +5,55 @@
 body {
   background-color: #f2f2f2;
 }
-
 html {
   scrollbar-width: none;
 }
-
 html::-webkit-scrollbar {
   display: none;
 }
 
+/* Swiper */
 .swiper-button-next:after,
 .swiper-button-prev:after {
   color: #fff;
 }
-
 .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
   background: #60a5fa !important;
 }
 
 @layer components {
+  /* Header */
   .header-link {
     @apply cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent;
   }
 
+  /* Section */
   .section-heading {
     @apply text-3xl text-center mt-6 font-bold;
   }
 
+  /* Text */
   .text-wrapper-1 {
     @apply flex justify-between whitespace-nowrap text-sm sm:text-lg;
   }
 
+  /* Home */
+  .home-show-more-text {
+    @apply px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out;
+  }
+  .home-heading-2 {
+    @apply px-3 text-2xl mt-6 font-semibold;
+  }
+  .home-listing-wrapper {
+    @apply sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+
+  /* Profile */
   .profile-input {
     @apply mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition ease-in-out;
   }
 
+  /* Sign in, Sign up, Forget password */
   .signin-wrapper {
     @apply flex justify-center flex-wrap items-center px-6 py-12 max-w-6xl mx-auto;
   }

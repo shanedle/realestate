@@ -127,7 +127,7 @@ export default function Profile() {
               }`}
             />
 
-            <div className="text-wrapper-1 mb-6">
+            <div className="global-text-wrapper mb-6">
               <p className="flex items-center ">
                 Do you want to change your name?
                 <span

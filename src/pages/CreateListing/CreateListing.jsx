@@ -143,10 +143,10 @@ export default function CreateListing() {
             console.log("Upload is " + progress + "% done");
             switch (snapshot.state) {
               case "paused":
-                console.log("Upload is paused");
+                console.log("Upload is paused.");
                 break;
               case "running":
-                console.log("Upload is running");
+                console.log("Upload is running.");
                 break;
             }
           },
@@ -205,7 +205,7 @@ export default function CreateListing() {
             id="type"
             value="sale"
             onClick={onChange}
-            className={`mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
+            className={`mr-3 create-listing-button ${
               type === "rent"
                 ? "bg-white text-black"
                 : "bg-slate-600 text-white"
@@ -218,7 +218,7 @@ export default function CreateListing() {
             id="type"
             value="rent"
             onClick={onChange}
-            className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
+            className={`ml-3 create-listing-button ${
               type === "sale"
                 ? "bg-white text-black"
                 : "bg-slate-600 text-white"
@@ -237,7 +237,7 @@ export default function CreateListing() {
           maxLength="32"
           minLength="10"
           required
-          className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 mb-6"
+          className="global-input mb-6"
         />
         <div className="flex space-x-6 mb-6">
           <div>
@@ -250,7 +250,7 @@ export default function CreateListing() {
               min="1"
               max="50"
               required
-              className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center"
+              className="global-input text-center"
             />
           </div>
           <div>
@@ -263,7 +263,7 @@ export default function CreateListing() {
               min="1"
               max="50"
               required
-              className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center"
+              className="global-input text-center"
             />
           </div>
         </div>
@@ -274,7 +274,7 @@ export default function CreateListing() {
             id="parking"
             value={true}
             onClick={onChange}
-            className={`mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
+            className={`mr-3 create-listing-button ${
               !parking ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
           >
@@ -285,7 +285,7 @@ export default function CreateListing() {
             id="parking"
             value={false}
             onClick={onChange}
-            className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
+            className={`ml-3 create-listing-button ${
               parking ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
           >
@@ -299,7 +299,7 @@ export default function CreateListing() {
             id="furnished"
             value={true}
             onClick={onChange}
-            className={`mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
+            className={`mr-3 create-listing-button ${
               !furnished ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
           >
@@ -310,7 +310,7 @@ export default function CreateListing() {
             id="furnished"
             value={false}
             onClick={onChange}
-            className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
+            className={`ml-3 create-listing-button ${
               furnished ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
           >
@@ -325,7 +325,7 @@ export default function CreateListing() {
           onChange={onChange}
           placeholder="Address"
           required
-          className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 mb-6"
+          className="global-input mb-6"
         />
         {!geolocationEnabled && (
           <div className="flex space-x-6 justify-start mb-6">
@@ -365,7 +365,7 @@ export default function CreateListing() {
           onChange={onChange}
           placeholder="Description"
           required
-          className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 mb-6"
+          className="global-input mb-6"
         />
         <p className="text-lg font-semibold">Offer</p>
         <div className="flex mb-6">
@@ -374,7 +374,7 @@ export default function CreateListing() {
             id="offer"
             value={true}
             onClick={onChange}
-            className={`mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
+            className={`mr-3 create-listing-button ${
               !offer ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
           >
@@ -385,7 +385,7 @@ export default function CreateListing() {
             id="offer"
             value={false}
             onClick={onChange}
-            className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
+            className={`ml-3 create-listing-button ${
               offer ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
           >
@@ -404,7 +404,7 @@ export default function CreateListing() {
                 min="50"
                 max="400000000"
                 required
-                className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center"
+                className="global-input text-center"
               />
               {type === "rent" && (
                 <div className="">
@@ -427,7 +427,7 @@ export default function CreateListing() {
                   min="50"
                   max="400000000"
                   required={offer}
-                  className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center"
+                  className="global-input text-center"
                 />
                 {type === "rent" && (
                   <div className="">

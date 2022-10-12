@@ -105,7 +105,7 @@ export default function SignUp() {
                 />
               )}
             </div>
-            <div className="text-wrapper-1">
+            <div className="global-text-wrapper">
               <p className="mb-6">
                 Have a account?
                 <Link to="/sign-in" className="signin-link-1">

@@ -33,8 +33,13 @@ html::-webkit-scrollbar {
   }
 
   /* Text */
-  .text-wrapper-1 {
+  .global-text-wrapper {
     @apply flex justify-between whitespace-nowrap text-sm sm:text-lg;
+  }
+
+  /* Input */
+  .global-input {
+    @apply w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600;
   }
 
   /* Home */
@@ -51,6 +56,16 @@ html::-webkit-scrollbar {
   /* Profile */
   .profile-input {
     @apply mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition ease-in-out;
+  }
+
+  /* Listing */
+  .listing-list {
+    @apply flex items-center whitespace-nowrap;
+  }
+
+  /* Create/Edit Listing */
+  .create-listing-button {
+    @apply flex items-center whitespace-nowrap;
   }
 
   /* Sign in, Sign up, Forget password */

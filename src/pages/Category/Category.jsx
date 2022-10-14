@@ -11,10 +11,10 @@ import {
   where,
 } from "firebase/firestore";
 
-import { db } from "../../services/firebase";
+import { db } from "services/firebase";
 
-import Spinner from "../../components/Spinner";
-import ListingItem from "../../components/ListingItem";
+import Spinner from "components/Spinner";
+import ListingItem from "components/ListingItem";
 
 export default function Category() {
   const [listings, setListings] = useState(null);

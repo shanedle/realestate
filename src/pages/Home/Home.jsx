@@ -9,9 +9,9 @@ import {
   where,
 } from "firebase/firestore";
 
-import { db } from "../../services/firebase";
+import { db } from "services/firebase";
 
-import ListingItem from "../../components/ListingItem";
+import ListingItem from "components/ListingItem";
 
 export default function Home() {
   // Offers

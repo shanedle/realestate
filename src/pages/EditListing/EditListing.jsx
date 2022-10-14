@@ -11,9 +11,9 @@ import {
 import { getAuth } from "firebase/auth";
 import { doc, getDoc, serverTimestamp, updateDoc } from "firebase/firestore";
 
-import { db } from "../../services/firebase";
+import { db } from "services/firebase";
 
-import Spinner from "../../components/Spinner";
+import Spinner from "components/Spinner";
 
 const options = {
   method: "GET",

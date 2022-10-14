@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
-import OAuth from "../../components/OAuth";
+import OAuth from "components/OAuth";
 
-import forgotPasswordImg from "../../assets/svg/undraw_forgot_password.svg";
+import forgotPasswordImg from "assets/svg/undraw_forgot_password.svg";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");

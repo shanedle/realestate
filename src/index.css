@@ -65,7 +65,7 @@ html::-webkit-scrollbar {
 
   /* Create/Edit Listing */
   .create-listing-button {
-    @apply flex items-center whitespace-nowrap;
+    @apply px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full;
   }
 
   /* Sign in, Sign up, Forget password */

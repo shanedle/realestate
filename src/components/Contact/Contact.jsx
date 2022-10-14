@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { doc, getDoc } from "firebase/firestore";
 
-import { db } from "../../services/firebase";
+import { db } from "services/firebase";
 
 export default function Contact({ userRef, listing }) {
   const [owner, setOwner] = useState(null);

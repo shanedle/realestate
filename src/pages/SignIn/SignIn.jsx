@@ -4,9 +4,9 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { toast } from "react-toastify";
 import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 
-import OAuth from "../../components/OAuth";
+import OAuth from "components/OAuth";
 
-import signInImg from "../../assets/svg/undraw_login.svg";
+import signInImg from "assets/svg/undraw_login.svg";
 
 export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);

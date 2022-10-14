@@ -19,10 +19,10 @@ import "swiper/css/bundle";
 import { getAuth } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 
-import { db } from "../../services/firebase";
+import { db } from "services/firebase";
 
-import Spinner from "../../components/Spinner";
-import Contact from "../../components/Contact";
+import Spinner from "components/Spinner";
+import Contact from "components/Contact";
 
 export default function Listing() {
   const auth = getAuth();

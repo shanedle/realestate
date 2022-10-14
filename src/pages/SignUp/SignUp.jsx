@@ -9,11 +9,11 @@ import {
 } from "firebase/auth";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 
-import { db } from "../../services/firebase";
+import { db } from "services/firebase";
 
-import OAuth from "../../components/OAuth";
+import OAuth from "components/OAuth";
 
-import signInImg from "../../assets/svg/undraw_login.svg";
+import signInImg from "assets/svg/undraw_login.svg";
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);

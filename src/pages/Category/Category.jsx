@@ -24,7 +24,7 @@ export default function Category() {
   const params = useParams();
 
   useEffect(() => {
-    async function fetchListings() {
+    const fetchListings = async () => {
       try {
         const listingRef = collection(db, "listings");
         const q = query(
@@ -48,12 +48,12 @@ export default function Category() {
       } catch (error) {
         toast.error("Couldn't fetch listing.");
       }
-    }
+    };
 
     fetchListings();
   }, [params.categoryName]);
 
-  async function onFetchMoreListings() {
+  const onFetchMoreListings = async () => {
     try {
       const listingRef = collection(db, "listings");
       const q = query(
@@ -78,7 +78,7 @@ export default function Category() {
     } catch (error) {
       toast.error("Couldn't fetch listing.");
     }
-  }
+  };
 
   return (
     <div className="max-w-6xl mx-auto px-3">

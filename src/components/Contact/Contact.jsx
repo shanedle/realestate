@@ -9,7 +9,7 @@ export default function Contact({ userRef, listing }) {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    async function getOwner() {
+    const getOwner = async () => {
       const docRef = doc(db, "users", userRef);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
@@ -17,13 +17,13 @@ export default function Contact({ userRef, listing }) {
       } else {
         toast.error("Couldn't get owner data.");
       }
-    }
+    };
     getOwner();
   }, [userRef]);
 
-  function onChange(e) {
+  const onChange = (e) => {
     setMessage(e.target.value);
-  }
+  };
 
   return (
     <>

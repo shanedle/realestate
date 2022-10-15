@@ -20,11 +20,11 @@ export default function Header() {
     });
   }, [auth]);
 
-  function pathMatchRoute(route) {
+  const pathMatchRoute = (route) => {
     if (route === location.pathname) {
       return true;
     }
-  }
+  };
 
   return (
     <div className="bg-white border-b shadow-sm sticky top-0 z-40">

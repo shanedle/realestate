@@ -33,19 +33,19 @@ export default function Profile() {
 
   const { name, email } = formData;
 
-  function onLogout() {
+  const onLogout = () => {
     auth.signOut();
     navigate("/");
-  }
+  };
 
-  function onChange(e) {
+  const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.id]: e.target.value,
     }));
-  }
+  };
 
-  async function onSubmit() {
+  const onSubmit = async () => {
     try {
       if (auth.currentUser.displayName !== name) {
         //update display name in firebase auth
@@ -63,10 +63,10 @@ export default function Profile() {
     } catch (error) {
       toast.error("Couldn't update the profile details.");
     }
-  }
+  };
 
   useEffect(() => {
-    async function fetchUserListings() {
+    const fetchUserListings = async () => {
       const listingRef = collection(db, "listings");
       const q = query(
         listingRef,
@@ -83,11 +83,11 @@ export default function Profile() {
       });
       setListings(listings);
       setLoading(false);
-    }
+    };
     fetchUserListings();
   }, [auth.currentUser.uid]);
 
-  async function onDelete(listingID) {
+  const onDelete = async (listingID) => {
     if (window.confirm("Are you sure you want to delete?")) {
       await deleteDoc(doc(db, "listings", listingID));
       const updatedListings = listings.filter(
@@ -96,10 +96,10 @@ export default function Profile() {
       setListings(updatedListings);
       toast.success("Successfully deleted the listing.");
     }
-  }
-  function onEdit(listingID) {
+  };
+  const onEdit = (listingID) => {
     navigate(`/edit-listing/${listingID}`);
-  }
+  };
 
   return (
     <>

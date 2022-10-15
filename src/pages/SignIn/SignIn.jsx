@@ -19,14 +19,14 @@ export default function SignIn() {
 
   const navigate = useNavigate();
 
-  function onChange(e) {
+  const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.id]: e.target.value,
     }));
-  }
+  };
 
-  async function onSubmit(e) {
+  const onSubmit = async (e) => {
     e.preventDefault();
     try {
       const auth = getAuth();
@@ -41,7 +41,7 @@ export default function SignIn() {
     } catch (error) {
       toast.error("Bad user credentials.");
     }
-  }
+  };
 
   return (
     <section>

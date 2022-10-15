@@ -18,7 +18,7 @@ export default function Home() {
   const [offerListings, setOfferListings] = useState(null);
 
   useEffect(() => {
-    async function fetchListings() {
+    const fetchListings = async () => {
       try {
         // get reference
         const listingsRef = collection(db, "listings");
@@ -42,14 +42,14 @@ export default function Home() {
       } catch (error) {
         console.log(error);
       }
-    }
+    };
     fetchListings();
   }, []);
 
   // Places for rent
   const [rentListings, setRentListings] = useState(null);
   useEffect(() => {
-    async function fetchListings() {
+    const fetchListings = async () => {
       try {
         // get reference
         const listingsRef = collection(db, "listings");
@@ -73,14 +73,14 @@ export default function Home() {
       } catch (error) {
         console.log(error);
       }
-    }
+    };
     fetchListings();
   }, []);
 
   // Places for rent
   const [saleListings, setSaleListings] = useState(null);
   useEffect(() => {
-    async function fetchListings() {
+    const fetchListings = async () => {
       try {
         // get reference
         const listingsRef = collection(db, "listings");
@@ -104,7 +104,7 @@ export default function Home() {
       } catch (error) {
         console.log(error);
       }
-    }
+    };
     fetchListings();
   }, []);
 

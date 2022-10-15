@@ -9,7 +9,7 @@ import { db } from "services/firebase";
 export default function OAuth() {
   const navigate = useNavigate();
 
-  async function onGoogleClick() {
+  const onGoogleClick = async () => {
     try {
       const auth = getAuth();
       const provider = new GoogleAuthProvider();
@@ -32,7 +32,7 @@ export default function OAuth() {
     } catch (error) {
       toast.error("Couldn't authorize with Google.");
     }
-  }
+  };
 
   return (
     <button

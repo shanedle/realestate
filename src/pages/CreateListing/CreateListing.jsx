@@ -63,7 +63,7 @@ export default function CreateListing() {
     longitude,
     images,
   } = formData;
-  function onChange(e) {
+  const onChange = (e) => {
     let boolean = null;
     if (e.target.value === "true") {
       boolean = true;
@@ -85,9 +85,9 @@ export default function CreateListing() {
         [e.target.id]: boolean ?? e.target.value,
       }));
     }
-  }
+  };
 
-  async function onSubmit(e) {
+  const onSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     if (+discountedPrice >= +regularPrice) {
@@ -127,7 +127,7 @@ export default function CreateListing() {
       geolocation.lng = longitude;
     }
 
-    async function storeImage(image) {
+    const storeImage = async (image) => {
       return new Promise((resolve, reject) => {
         const storage = getStorage();
         const filename = `${auth.currentUser.uid}-${image.name}-${uuidv4()}`;
@@ -163,7 +163,7 @@ export default function CreateListing() {
           }
         );
       });
-    }
+    };
 
     const imgUrls = await Promise.all(
       [...images].map((image) => storeImage(image))
@@ -188,7 +188,7 @@ export default function CreateListing() {
     setLoading(false);
     toast.success("Listing created.");
     navigate(`/category/${formDataCopy.type}/${docRef.id}`);
-  }
+  };
 
   if (loading) {
     return <Spinner />;

@@ -10,11 +10,11 @@ import forgotPasswordImg from "assets/svg/undraw_forgot_password.svg";
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
 
-  function onChange(e) {
+  const onChange = (e) => {
     setEmail(e.target.value);
-  }
+  };
 
-  async function onSubmit(e) {
+  const onSubmit = async (e) => {
     e.preventDefault();
     try {
       const auth = getAuth();
@@ -23,7 +23,7 @@ export default function ForgotPassword() {
     } catch (error) {
       toast.error("Couldn't send the password reset.");
     }
-  }
+  };
 
   return (
     <section>

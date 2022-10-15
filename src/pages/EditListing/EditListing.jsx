@@ -76,7 +76,7 @@ export default function CreateListing() {
 
   useEffect(() => {
     setLoading(true);
-    async function fetchListing() {
+    const fetchListing = async () => {
       const docRef = doc(db, "listings", params.listingId);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
@@ -87,11 +87,11 @@ export default function CreateListing() {
         navigate("/");
         toast.error("The listing doesn't exist.");
       }
-    }
+    };
     fetchListing();
   }, [navigate, params.listingId]);
 
-  function onChange(e) {
+  const onChange = (e) => {
     let boolean = null;
     if (e.target.value === "true") {
       boolean = true;
@@ -113,9 +113,9 @@ export default function CreateListing() {
         [e.target.id]: boolean ?? e.target.value,
       }));
     }
-  }
+  };
 
-  async function onSubmit(e) {
+  const onSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     if (+discountedPrice >= +regularPrice) {
@@ -155,7 +155,7 @@ export default function CreateListing() {
       geolocation.lng = longitude;
     }
 
-    async function storeImage(image) {
+    const storeImage = async (image) => {
       return new Promise((resolve, reject) => {
         const storage = getStorage();
         const filename = `${auth.currentUser.uid}-${image.name}-${uuidv4()}`;
@@ -191,7 +191,7 @@ export default function CreateListing() {
           }
         );
       });
-    }
+    };
 
     const imgUrls = await Promise.all(
       [...images].map((image) => storeImage(image))
@@ -220,7 +220,7 @@ export default function CreateListing() {
     setLoading(false);
     toast.success("Listing Edited");
     navigate(`/category/${formDataCopy.type}/${docRef.id}`);
-  }
+  };
 
   if (loading) {
     return <Spinner />;

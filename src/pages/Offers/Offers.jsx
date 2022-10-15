@@ -21,7 +21,7 @@ export default function Offers() {
   const [lastFetchedListing, setLastFetchListing] = useState(null);
 
   useEffect(() => {
-    async function fetchListings() {
+    const fetchListings = async () => {
       try {
         const listingRef = collection(db, "listings");
         const q = query(
@@ -45,12 +45,12 @@ export default function Offers() {
       } catch (error) {
         toast.error("Couldn't fetch the listing.");
       }
-    }
+    };
 
     fetchListings();
   }, []);
 
-  async function onFetchMoreListings() {
+  const onFetchMoreListings = async () => {
     try {
       const listingRef = collection(db, "listings");
       const q = query(
@@ -75,7 +75,7 @@ export default function Offers() {
     } catch (error) {
       toast.error("Couldn't fetch the listing.");
     }
-  }
+  };
 
   return (
     <div className="max-w-6xl mx-auto px-3">

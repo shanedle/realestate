@@ -33,19 +33,19 @@ export default function Profile() {
 
   const { name, email } = formData;
 
-  const onLogout = () => {
+  const handleSignOut = () => {
     auth.signOut();
     navigate("/");
   };
 
-  const onChange = (e) => {
+  const handleChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.id]: e.target.value,
     }));
   };
 
-  const onSubmit = async () => {
+  const handleSubmit = async () => {
     try {
       if (auth.currentUser.displayName !== name) {
         //update display name in firebase auth
@@ -87,7 +87,7 @@ export default function Profile() {
     fetchUserListings();
   }, [auth.currentUser.uid]);
 
-  const onDelete = async (listingID) => {
+  const handleDelete = async (listingID) => {
     if (window.confirm("Are you sure you want to delete?")) {
       await deleteDoc(doc(db, "listings", listingID));
       const updatedListings = listings.filter(
@@ -97,7 +97,7 @@ export default function Profile() {
       toast.success("Successfully deleted the listing.");
     }
   };
-  const onEdit = (listingID) => {
+  const handleEdit = (listingID) => {
     navigate(`/edit-listing/${listingID}`);
   };
 
@@ -113,7 +113,7 @@ export default function Profile() {
               id="name"
               value={name}
               disabled={!changeDetail}
-              onChange={onChange}
+              onChange={handleChange}
               className="profile-input"
             />
             {/* Email Input */}
@@ -132,7 +132,7 @@ export default function Profile() {
                 Do you want to change your name?
                 <span
                   onClick={() => {
-                    changeDetail && onSubmit();
+                    changeDetail && handleSubmit();
                     setChangeDetail((prevState) => !prevState);
                   }}
                   className="text-red-600 hover:text-red-700 transition ease-in-out duration-200 ml-1 cursor-pointer"
@@ -140,7 +140,10 @@ export default function Profile() {
                   {changeDetail ? "Apply change" : "Edit"}
                 </span>
               </p>
-              <p onClick={onLogout} className="signin-link-2 cursor-pointer">
+              <p
+                onClick={handleSignOut}
+                className="signin-link-2 cursor-pointer"
+              >
                 Sign out
               </p>
             </div>
@@ -171,8 +174,8 @@ export default function Profile() {
                   key={listing.id}
                   id={listing.id}
                   listing={listing.data}
-                  onDelete={() => onDelete(listing.id)}
-                  onEdit={() => onEdit(listing.id)}
+                  handleDelete={() => handleDelete(listing.id)}
+                  handleEdit={() => handleEdit(listing.id)}
                 />
               ))}
             </ul>

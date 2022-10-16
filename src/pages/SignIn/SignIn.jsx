@@ -19,14 +19,14 @@ export default function SignIn() {
 
   const navigate = useNavigate();
 
-  const onChange = (e) => {
+  const handleChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.id]: e.target.value,
     }));
   };
 
-  const onSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const auth = getAuth();
@@ -51,12 +51,12 @@ export default function SignIn() {
           <img src={signInImg} alt="key" className="w-full rounded-2xl" />
         </div>
         <div className="w-full md:w-[67%] lg:w-[40%] lg:ml-20">
-          <form onSubmit={onSubmit}>
+          <form onSubmit={handleSubmit}>
             <input
               type="email"
               id="email"
               value={email}
-              onChange={onChange}
+              onChange={handleChange}
               placeholder="Email address"
               className="mb-6 signin-input"
             />
@@ -65,7 +65,7 @@ export default function SignIn() {
                 type={showPassword ? "text" : "password"}
                 id="password"
                 value={password}
-                onChange={onChange}
+                onChange={handleChange}
                 placeholder="Password"
                 className="signin-input"
               />

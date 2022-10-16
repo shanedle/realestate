@@ -10,11 +10,11 @@ import forgotPasswordImg from "assets/svg/undraw_forgot_password.svg";
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
 
-  const onChange = (e) => {
+  const handleChange = (e) => {
     setEmail(e.target.value);
   };
 
-  const onSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const auth = getAuth();
@@ -37,12 +37,12 @@ export default function ForgotPassword() {
           />
         </div>
         <div className="w-full md:w-[67%] lg:w-[40%] lg:ml-20">
-          <form onSubmit={onSubmit}>
+          <form onSubmit={handleSubmit}>
             <input
               type="email"
               id="email"
               value={email}
-              onChange={onChange}
+              onChange={handleChange}
               placeholder="Email address"
               className="mb-6 signin-input"
             />

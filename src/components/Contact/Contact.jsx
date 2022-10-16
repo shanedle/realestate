@@ -21,7 +21,7 @@ export default function Contact({ userRef, listing }) {
     getOwner();
   }, [userRef]);
 
-  const onChange = (e) => {
+  const handleChange = (e) => {
     setMessage(e.target.value);
   };
 
@@ -38,7 +38,7 @@ export default function Contact({ userRef, listing }) {
               id="message"
               rows="2"
               value={message}
-              onChange={onChange}
+              onChange={handleChange}
               className="global-input"
             ></textarea>
           </div>

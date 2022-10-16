@@ -53,7 +53,7 @@ export default function Category() {
     fetchListings();
   }, [params.categoryName]);
 
-  const onFetchMoreListings = async () => {
+  const handleFetchMoreListings = async () => {
     try {
       const listingRef = collection(db, "listings");
       const q = query(
@@ -103,7 +103,7 @@ export default function Category() {
           {lastFetchedListing && (
             <div className="flex justify-center items-center">
               <button
-                onClick={onFetchMoreListings}
+                onClick={handleFetchMoreListings}
                 className="bg-white px-3 py-1.5 text-gray-700 border border-gray-300 mb-6 mt-6 hover:border-slate-600 rounded transition duration-150 ease-in-out"
               >
                 Load more

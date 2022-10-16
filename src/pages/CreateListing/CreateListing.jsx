@@ -63,7 +63,7 @@ export default function CreateListing() {
     longitude,
     images,
   } = formData;
-  const onChange = (e) => {
+  const handleChange = (e) => {
     let boolean = null;
     if (e.target.value === "true") {
       boolean = true;
@@ -87,7 +87,7 @@ export default function CreateListing() {
     }
   };
 
-  const onSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     if (+discountedPrice >= +regularPrice) {
@@ -197,14 +197,14 @@ export default function CreateListing() {
   return (
     <main className="max-w-md px-2 mx-auto">
       <h1 className="section-heading">Create a Listing</h1>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit}>
         <p className="text-lg mt-6 font-semibold">Sell / Rent</p>
         <div className="flex">
           <button
             type="button"
             id="type"
             value="sale"
-            onClick={onChange}
+            onClick={handleChange}
             className={`mr-3 create-listing-button ${
               type === "rent"
                 ? "bg-white text-black"
@@ -217,7 +217,7 @@ export default function CreateListing() {
             type="button"
             id="type"
             value="rent"
-            onClick={onChange}
+            onClick={handleChange}
             className={`ml-3 create-listing-button ${
               type === "sale"
                 ? "bg-white text-black"
@@ -232,7 +232,7 @@ export default function CreateListing() {
           type="text"
           id="name"
           value={name}
-          onChange={onChange}
+          onChange={handleChange}
           placeholder="Name"
           maxLength="32"
           minLength="10"
@@ -246,7 +246,7 @@ export default function CreateListing() {
               type="number"
               id="bedrooms"
               value={bedrooms}
-              onChange={onChange}
+              onChange={handleChange}
               min="1"
               max="50"
               required
@@ -259,7 +259,7 @@ export default function CreateListing() {
               type="number"
               id="bathrooms"
               value={bathrooms}
-              onChange={onChange}
+              onChange={handleChange}
               min="1"
               max="50"
               required
@@ -273,7 +273,7 @@ export default function CreateListing() {
             type="button"
             id="parking"
             value={true}
-            onClick={onChange}
+            onClick={handleChange}
             className={`mr-3 create-listing-button ${
               !parking ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
@@ -284,7 +284,7 @@ export default function CreateListing() {
             type="button"
             id="parking"
             value={false}
-            onClick={onChange}
+            onClick={handleChange}
             className={`ml-3 create-listing-button ${
               parking ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
@@ -298,7 +298,7 @@ export default function CreateListing() {
             type="button"
             id="furnished"
             value={true}
-            onClick={onChange}
+            onClick={handleChange}
             className={`mr-3 create-listing-button ${
               !furnished ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
@@ -309,7 +309,7 @@ export default function CreateListing() {
             type="button"
             id="furnished"
             value={false}
-            onClick={onChange}
+            onClick={handleChange}
             className={`ml-3 create-listing-button ${
               furnished ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
@@ -322,7 +322,7 @@ export default function CreateListing() {
           type="text"
           id="address"
           value={address}
-          onChange={onChange}
+          onChange={handleChange}
           placeholder="Address"
           required
           className="global-input mb-6"
@@ -335,7 +335,7 @@ export default function CreateListing() {
                 type="number"
                 id="latitude"
                 value={latitude}
-                onChange={onChange}
+                onChange={handleChange}
                 required
                 min="-90"
                 max="90"
@@ -348,7 +348,7 @@ export default function CreateListing() {
                 type="number"
                 id="longitude"
                 value={longitude}
-                onChange={onChange}
+                onChange={handleChange}
                 required
                 min="-180"
                 max="180"
@@ -362,7 +362,7 @@ export default function CreateListing() {
           type="text"
           id="description"
           value={description}
-          onChange={onChange}
+          onChange={handleChange}
           placeholder="Description"
           required
           className="global-input mb-6"
@@ -373,7 +373,7 @@ export default function CreateListing() {
             type="button"
             id="offer"
             value={true}
-            onClick={onChange}
+            onClick={handleChange}
             className={`mr-3 create-listing-button ${
               !offer ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
@@ -384,7 +384,7 @@ export default function CreateListing() {
             type="button"
             id="offer"
             value={false}
-            onClick={onChange}
+            onClick={handleChange}
             className={`ml-3 create-listing-button ${
               offer ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
@@ -400,7 +400,7 @@ export default function CreateListing() {
                 type="number"
                 id="regularPrice"
                 value={regularPrice}
-                onChange={onChange}
+                onChange={handleChange}
                 min="50"
                 max="400000000"
                 required
@@ -423,7 +423,7 @@ export default function CreateListing() {
                   type="number"
                   id="discountedPrice"
                   value={discountedPrice}
-                  onChange={onChange}
+                  onChange={handleChange}
                   min="50"
                   max="400000000"
                   required={offer}
@@ -448,7 +448,7 @@ export default function CreateListing() {
           <input
             type="file"
             id="images"
-            onChange={onChange}
+            onChange={handleChange}
             accept=".jpg,.png,.jpeg"
             multiple
             required

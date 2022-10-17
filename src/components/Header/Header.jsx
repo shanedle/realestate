@@ -59,7 +59,16 @@ export default function Header() {
               }`}
               onClick={() => navigate("/category/sale")}
             >
-              View listings
+              Buy
+            </li>
+            <li
+              className={`header-link ${
+                pathMatchRoute("/category/rent") &&
+                "text-black border-b-blue-500"
+              }`}
+              onClick={() => navigate("/category/rent")}
+            >
+              Rent
             </li>
             <li
               className={`header-link ${

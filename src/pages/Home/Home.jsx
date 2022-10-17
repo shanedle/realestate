@@ -46,7 +46,7 @@ export default function Home() {
     fetchListings();
   }, []);
 
-  // Places for rent
+  // Houses for rent
   const [rentListings, setRentListings] = useState(null);
   useEffect(() => {
     const fetchListings = async () => {
@@ -77,7 +77,7 @@ export default function Home() {
     fetchListings();
   }, []);
 
-  // Places for rent
+  // Houses for rent
   const [saleListings, setSaleListings] = useState(null);
   useEffect(() => {
     const fetchListings = async () => {
@@ -115,7 +115,7 @@ export default function Home() {
           <div className="m-2 mb-6">
             <h2 className="home-heading-2">Recent offers</h2>
             <Link to="/offers">
-              <p className="home-show-more-text">Show more offers</p>
+              <p className="home-show-more-text">View all offers</p>
             </Link>
             <ul className="home-listing-wrapper ">
               {offerListings.map((listing) => (
@@ -130,9 +130,9 @@ export default function Home() {
         )}
         {rentListings && rentListings.length > 0 && (
           <div className="m-2 mb-6">
-            <h2 className="home-heading-2">Places for rent</h2>
+            <h2 className="home-heading-2">Houses for rent</h2>
             <Link to="/category/rent">
-              <p className="home-show-more-text">Show more places for rent</p>
+              <p className="home-show-more-text">View all houses for rent</p>
             </Link>
             <ul className="home-listing-wrapper">
               {rentListings.map((listing) => (
@@ -147,9 +147,9 @@ export default function Home() {
         )}
         {saleListings && saleListings.length > 0 && (
           <div className="m-2 mb-6">
-            <h2 className="home-heading-2">Places for sale</h2>
+            <h2 className="home-heading-2">Houses for sale</h2>
             <Link to="/category/sale">
-              <p className="home-show-more-text">Show more places for sale</p>
+              <p className="home-show-more-text">View all houses for sale</p>
             </Link>
             <ul className="home-listing-wrapper">
               {saleListings.map((listing) => (

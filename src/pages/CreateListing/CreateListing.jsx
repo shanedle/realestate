@@ -399,7 +399,7 @@ export default function CreateListing() {
               />
               {type === "rent" && (
                 <div className="">
-                  <p className="text-md w-full whitespace-nowrap">$ / Month</p>
+                  <p className="text-md w-full whitespace-nowrap">kr / Month</p>
                 </div>
               )}
             </div>
@@ -434,7 +434,7 @@ export default function CreateListing() {
         <div className="mb-6">
           <p className="text-lg font-semibold">Images</p>
           <p className="text-gray-600">
-            The first image will be the cover (max 6)
+            The first image will be the cover image(max 6).
           </p>
           <input
             type="file"

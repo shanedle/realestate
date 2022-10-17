@@ -15,14 +15,6 @@ import { db } from "services/firebase";
 
 import Spinner from "components/Spinner";
 
-const options = {
-  method: "GET",
-  headers: {
-    "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
-    "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
-  },
-};
-
 export default function CreateListing() {
   const navigate = useNavigate();
 
@@ -107,13 +99,12 @@ export default function CreateListing() {
 
     if (geolocationEnabled) {
       const response = await fetch(
-        `https://google-maps28.p.rapidapi.com/maps/api/geocode/json?language=en&address=${address}result_type=%3Cstring%3E%7C%3Cstring%3E&location_type=%3Cstring%3E%7C%3Cstring%3E&components=%3Cstring%3E%7C%3Cstring%3E&region=en`,
-        options
+        `https://eu1.locationiq.com/v1/search?key=${process.env.REACT_APP_LOCATION_IQ}&q=${address}&format=json`
       );
       const data = await response.json();
       console.log(data);
-      geolocation.lat = data.results[0]?.geometry.location.lat ?? 0;
-      geolocation.lng = data.results[0]?.geometry.location.lng ?? 0;
+      geolocation.lat = data[0]?.lat ?? 0;
+      geolocation.lng = data[0]?.lon ?? 0;
 
       location = data.status === "ZERO_RESULTS" && undefined;
 

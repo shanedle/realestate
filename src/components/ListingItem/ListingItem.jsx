@@ -11,6 +11,7 @@ export default function ListingItem({ listing, id, handleEdit, handleDelete }) {
           className="h-[170px] w-full object-cover"
           loading="lazy"
           src={listing.imgUrls[0]}
+          alt={listing.name}
         />
         <Moment
           className="absolute top-2 left-2 bg-[#3377cc] text-white uppercase text-xs font-semibold rounded-md px-2 py-1 shadow-lg"

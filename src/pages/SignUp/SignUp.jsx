@@ -81,7 +81,7 @@ export default function SignUp() {
               id="email"
               value={email}
               onChange={handleChange}
-              placeholder="Email address"
+              placeholder="Email"
               className="mb-6 signin-input"
             />
             <div className="relative mb-6">
@@ -107,7 +107,7 @@ export default function SignUp() {
             </div>
             <div className="global-text-wrapper">
               <p className="mb-6">
-                Have a account?
+                Already have an account?
                 <Link to="/sign-in" className="signin-link-1">
                   Sign in
                 </Link>

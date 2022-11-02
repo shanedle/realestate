@@ -49,7 +49,7 @@ export default function ForgotPassword() {
 
             <div className="global-text-wrapper">
               <p className="mb-6">
-                Don't have a account?
+                Don't have an account?
                 <Link to="/sign-up" className="signin-link-1">
                   Sign Up
                 </Link>

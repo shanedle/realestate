@@ -346,7 +346,7 @@ export default function CreateListing() {
           id="address"
           value={address}
           onChange={handleChange}
-          placeholder="Address"
+          placeholder="e.g. Oslo, Norway"
           required
           className="global-input mb-6"
         />

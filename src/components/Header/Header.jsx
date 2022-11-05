@@ -14,7 +14,7 @@ export default function Header() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        setPageState("Profile");
+        setPageState("Account");
       } else {
         setPageState("Sign in");
       }
@@ -115,10 +115,10 @@ export default function Header() {
             <div className="mt-3 space-y-2 lg:hidden md:inline-block">
               <div
                 className={`header-link ${
-                  (pathMatchRoute("/sign-in") || pathMatchRoute("/profile")) &&
+                  (pathMatchRoute("/sign-in") || pathMatchRoute("/account")) &&
                   "text-black"
                 }`}
-                onClick={() => navigate("/profile")}
+                onClick={() => navigate("/account")}
               >
                 {pageState}
               </div>
@@ -128,10 +128,10 @@ export default function Header() {
         <div className="hidden space-x-2 md:inline-block">
           <div
             className={`header-link ${
-              (pathMatchRoute("/sign-in") || pathMatchRoute("/profile")) &&
+              (pathMatchRoute("/sign-in") || pathMatchRoute("/account")) &&
               "text-black"
             }`}
-            onClick={() => navigate("/profile")}
+            onClick={() => navigate("/account")}
           >
             {pageState}
           </div>

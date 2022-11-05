@@ -18,7 +18,7 @@ import { db } from "services/firebase";
 
 import ListingItem from "components/ListingItem";
 
-export default function Profile() {
+export default function Account() {
   const auth = getAuth();
 
   const navigate = useNavigate();
@@ -59,9 +59,9 @@ export default function Profile() {
           name,
         });
       }
-      toast.success("Profile details updated.");
+      toast.success("Account details updated.");
     } catch (error) {
-      toast.error("Couldn't update the profile details.");
+      toast.error("Couldn't update the account details.");
     }
   };
 
@@ -104,7 +104,7 @@ export default function Profile() {
   return (
     <>
       <section className="max-w-6xl mx-auto flex justify-center items-center flex-col">
-        <h1 className="section-heading">My Profile</h1>
+        <h1 className="section-heading">My Account</h1>
         <div className="w-full md:w-[50%] mt-6 px-3">
           <form>
             {/* Name Input */}
@@ -114,7 +114,7 @@ export default function Profile() {
               value={name}
               disabled={!changeDetail}
               onChange={handleChange}
-              className="profile-input"
+              className="account-input"
             />
             {/* Email Input */}
             <input
@@ -122,7 +122,7 @@ export default function Profile() {
               id="email"
               value={email}
               disabled
-              className={`profile-input ${
+              className={`account-input ${
                 changeDetail && "bg-red-200 focus:bg-red-200"
               }`}
             />

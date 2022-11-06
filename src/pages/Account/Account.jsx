@@ -48,7 +48,7 @@ export default function Account() {
   const handleSubmit = async () => {
     try {
       if (auth.currentUser.displayName !== name) {
-        //update display name in firebase auth
+        //update display name in the firebase auth
         await updateProfile(auth.currentUser, {
           displayName: name,
         });
@@ -59,7 +59,7 @@ export default function Account() {
           name,
         });
       }
-      toast.success("Account details updated.");
+      toast.success("Successfully updated the account details.");
     } catch (error) {
       toast.error("Couldn't update the account details.");
     }
@@ -88,7 +88,7 @@ export default function Account() {
   }, [auth.currentUser.uid]);
 
   const handleDelete = async (listingID) => {
-    if (window.confirm("Are you sure you want to delete?")) {
+    if (window.confirm("Are you sure you want to delete the listing?")) {
       await deleteDoc(doc(db, "listings", listingID));
       const updatedListings = listings.filter(
         (listing) => listing.id !== listingID
@@ -156,8 +156,7 @@ export default function Account() {
               to="/create-listing"
               className="flex justify-center items-center"
             >
-              <FcHome className="mr-2 text-3xl bg-red-200 rounded-full p-1 border-2" />
-              Sell or rent your home
+              Sell/Rent your home
             </Link>
           </button>
         </div>

@@ -188,7 +188,7 @@ export default function CreateListing() {
       [...images].map((image) => storeImage(image))
     ).catch((error) => {
       setLoading(false);
-      toast.error("Images not uploaded");
+      toast.error("Images failed to upload.");
       return;
     });
 

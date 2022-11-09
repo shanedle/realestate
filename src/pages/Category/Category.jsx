@@ -83,7 +83,9 @@ export default function Category() {
   return (
     <div className="max-w-6xl mx-auto px-3">
       <h1 className="section-heading mb-6">
-        {params.categoryName === "rent" ? "Houses for rent" : "Houses for sale"}
+        {params.categoryName === "rent"
+          ? "Rental Listings"
+          : "Real Estate & Houses For Sale"}
       </h1>
       {loading ? (
         <Spinner />

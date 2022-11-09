@@ -20,7 +20,7 @@ export default function Home() {
   useEffect(() => {
     const fetchListings = async () => {
       try {
-        // get reference
+        // get the reference
         const listingsRef = collection(db, "listings");
         // create the query
         const q = query(
@@ -32,6 +32,7 @@ export default function Home() {
         // execute the query
         const querySnap = await getDocs(q);
         const listings = [];
+
         querySnap.forEach((doc) => {
           return listings.push({
             id: doc.id,
@@ -51,7 +52,7 @@ export default function Home() {
   useEffect(() => {
     const fetchListings = async () => {
       try {
-        // get reference
+        // get the reference
         const listingsRef = collection(db, "listings");
         // create the query
         const q = query(
@@ -63,6 +64,7 @@ export default function Home() {
         // execute the query
         const querySnap = await getDocs(q);
         const listings = [];
+
         querySnap.forEach((doc) => {
           return listings.push({
             id: doc.id,
@@ -82,7 +84,7 @@ export default function Home() {
   useEffect(() => {
     const fetchListings = async () => {
       try {
-        // get reference
+        // get the reference
         const listingsRef = collection(db, "listings");
         // create the query
         const q = query(
@@ -94,6 +96,7 @@ export default function Home() {
         // execute the query
         const querySnap = await getDocs(q);
         const listings = [];
+
         querySnap.forEach((doc) => {
           return listings.push({
             id: doc.id,

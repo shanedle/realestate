@@ -110,6 +110,14 @@ export default function Header() {
               >
                 Rent
               </li>
+              <li
+                className={`header-link ${
+                  pathMatchRoute("/create-listing") && "text-black"
+                }`}
+                onClick={() => navigate("/create-listing")}
+              >
+                Sell
+              </li>
             </ul>
 
             <div className="mt-3 space-y-2 lg:hidden md:inline-block">

@@ -23,7 +23,7 @@ export default function CreateListing() {
   const [geolocationEnabled, setGeolocationEnabled] = useState(true);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    type: "rent",
+    type: "sale",
     name: "",
     bedrooms: 1,
     bathrooms: 1,
@@ -63,7 +63,7 @@ export default function CreateListing() {
     if (e.target.value === "false") {
       boolean = false;
     }
-    // Files
+    // Image Files
     if (e.target.files) {
       setFormData((prevState) => ({
         ...prevState,
@@ -146,8 +146,7 @@ export default function CreateListing() {
             reject(error);
           },
           () => {
-            // Handle successful uploads on complete
-            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+            // Handle successful uploads
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
               resolve(downloadURL);
             });

@@ -14,7 +14,6 @@ import { db } from "services/firebase";
 import ListingItem from "components/ListingItem";
 
 export default function Home() {
-  // Offers
   const [offerListings, setOfferListings] = useState(null);
 
   useEffect(() => {

@@ -133,7 +133,7 @@ export default function Header() {
             </div>
           </div>
         </div>
-        <div className="hidden space-x-2 md:inline-block">
+        <div className="hidden space-x-2 lg:inline-block">
           <div
             className={`header-link ${
               (pathMatchRoute("/sign-in") || pathMatchRoute("/account")) &&

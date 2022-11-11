@@ -11,6 +11,7 @@ import {
 
 import { db } from "services/firebase";
 
+import Hero from "components/Hero";
 import ListingItem from "components/ListingItem";
 
 export default function Home() {
@@ -112,6 +113,8 @@ export default function Home() {
 
   return (
     <div>
+      <Hero />
+
       <div className="max-w-6xl mx-auto pt-4 space-y-6">
         {offerListings && offerListings.length > 0 && (
           <div className="m-2 mb-6">

@@ -15,38 +15,6 @@ import Hero from "components/Hero";
 import ListingItem from "components/ListingItem";
 
 export default function Home() {
-  const [offerListings, setOfferListings] = useState(null);
-
-  useEffect(() => {
-    const fetchListings = async () => {
-      try {
-        // get the reference
-        const listingsRef = collection(db, "listings");
-        // create the query
-        const q = query(
-          listingsRef,
-          where("offer", "==", true),
-          orderBy("timestamp", "desc"),
-          limit(4)
-        );
-        // execute the query
-        const querySnap = await getDocs(q);
-        const listings = [];
-
-        querySnap.forEach((doc) => {
-          return listings.push({
-            id: doc.id,
-            data: doc.data(),
-          });
-        });
-        setOfferListings(listings);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchListings();
-  }, []);
-
   // Houses for rent
   const [rentListings, setRentListings] = useState(null);
   useEffect(() => {
@@ -116,23 +84,6 @@ export default function Home() {
       <Hero />
 
       <div className="max-w-6xl mx-auto pt-4 space-y-6">
-        {offerListings && offerListings.length > 0 && (
-          <div className="m-2 mb-6">
-            <h2 className="home-heading-2">Recent offers</h2>
-            <Link to="/offers">
-              <p className="home-show-more-text">View all offers</p>
-            </Link>
-            <ul className="home-listing-wrapper ">
-              {offerListings.map((listing) => (
-                <ListingItem
-                  key={listing.id}
-                  listing={listing.data}
-                  id={listing.id}
-                />
-              ))}
-            </ul>
-          </div>
-        )}
         {rentListings && rentListings.length > 0 && (
           <div className="m-2 mb-6">
             <h2 className="home-heading-2">Houses for rent</h2>

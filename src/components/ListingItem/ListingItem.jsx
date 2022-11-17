@@ -28,13 +28,9 @@ export default function ListingItem({ listing, id, handleEdit, handleDelete }) {
           </div>
           <p className="font-semibold m-0 text-xl truncate">{listing.name}</p>
           <p className="mt-2 font-semibold">
-            {listing.offer
-              ? listing.discountedPrice
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-              : listing.regularPrice
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            {listing.regularPrice
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             {listing.type === "rent" && " / month"} kr
           </p>
           <div className="flex items-center mt-[10px] space-x-3">

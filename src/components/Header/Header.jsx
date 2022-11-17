@@ -88,14 +88,6 @@ export default function Header() {
               </li>
               <li
                 className={`header-link ${
-                  pathMatchRoute("/offers") && "text-black"
-                }`}
-                onClick={() => navigate("/offers")}
-              >
-                Offers
-              </li>
-              <li
-                className={`header-link ${
                   pathMatchRoute("/category/sale") && "text-black "
                 }`}
                 onClick={() => navigate("/category/sale")}

@@ -78,34 +78,21 @@ export default function Listing() {
         <div className=" w-full ">
           <p className="text-2xl font-bold mb-3 text-blue-900">
             {listing.name} -{" "}
-            {listing.offer
-              ? listing.discountedPrice
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-              : listing.regularPrice
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            {listing.type === "rent" ? " / month" : ""} kr
+            {listing.regularPrice
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            {listing.type === "rent" ? "/month" : ""} kr
           </p>
           <p className="flex items-center mt-6 mb-3 font-semibold">
             <FaMapMarkerAlt className="text-green-700 mr-1" />
             {listing.address}
           </p>
-          <div className="flex justify-start items-center space-x-4 w-[75%]">
+          <div className="flex justify-between space-x-2">
             <p className="bg-red-800 w-full max-w-[200px] rounded-md p-1 text-white text-center font-semibold shadow-md">
-              {listing.type === "rent" ? "RENT" : "SALE"}
+              {listing.type === "rent" ? "For Rent" : "For Sale"}
             </p>
-            {listing.offer && (
-              <p className="w-full max-w-[200px] bg-green-800 rounded-md p-1 text-white text-center font-semibold shadow-md">
-                {+listing.regularPrice - +listing.discountedPrice} KR DISCOUNT!
-              </p>
-            )}
           </div>
-          <p className="mt-3 mb-3">
-            <span className="font-semibold">Description - </span>
-            {listing.description}
-          </p>
-          <ul className="flex items-center space-x-2 sm:space-x-10 text-sm font-semibold mb-6">
+          <ul className="flex items-center space-x-2 sm:space-x-10 text-sm font-semibold  mt-3 mb-3">
             <li className="listing-list">
               <FaBed className="text-lg mr-1" />
               {+listing.bedrooms > 1 ? `${listing.bedrooms} Beds` : "1 Bed"}
@@ -123,6 +110,10 @@ export default function Listing() {
               {listing.furnished ? "Furnished" : "Not furnished"}
             </li>
           </ul>
+          <p className="mb-6">
+            <span className="font-semibold">Description - </span>
+            {listing.description}
+          </p>
           {listing.userRef !== auth.currentUser?.uid && !contactOwner && (
             <div className="mt-6">
               <button

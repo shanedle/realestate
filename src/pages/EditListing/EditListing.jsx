@@ -32,9 +32,7 @@ export default function CreateListing() {
     furnished: false,
     address: "",
     description: "",
-    offer: false,
     regularPrice: 0,
-    discountedPrice: 0,
     latitude: 0,
     longitude: 0,
     images: {},
@@ -49,9 +47,7 @@ export default function CreateListing() {
     address,
     furnished,
     description,
-    offer,
     regularPrice,
-    discountedPrice,
     latitude,
     longitude,
     images,
@@ -110,11 +106,7 @@ export default function CreateListing() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    if (+discountedPrice >= +regularPrice) {
-      setLoading(false);
-      toast.error("Discounted price must be less than regular price.");
-      return;
-    }
+
     if (images.length > 6) {
       setLoading(false);
       toast.error("Maximum 6 images allowed.");
@@ -201,7 +193,6 @@ export default function CreateListing() {
     };
 
     delete formDataCopy.images;
-    !formDataCopy.offer && delete formDataCopy.discountedPrice;
     delete formDataCopy.latitude;
     delete formDataCopy.longitude;
 
@@ -256,7 +247,7 @@ export default function CreateListing() {
           id="name"
           value={name}
           onChange={handleChange}
-          placeholder="Name"
+          placeholder="E.g. White Wooden House"
           maxLength="32"
           minLength="10"
           required
@@ -346,7 +337,7 @@ export default function CreateListing() {
           id="address"
           value={address}
           onChange={handleChange}
-          placeholder="e.g. Oslo, Norway"
+          placeholder="E.g. Oslo, Norway"
           required
           className="global-input mb-6"
         />
@@ -386,35 +377,10 @@ export default function CreateListing() {
           id="description"
           value={description}
           onChange={handleChange}
-          placeholder="Description"
+          placeholder="E.g. White Wooden House in Oslo."
           required
           className="global-input mb-6"
         />
-        <p className="text-lg font-semibold">Offer</p>
-        <div className="flex mb-6">
-          <button
-            type="button"
-            id="offer"
-            value={true}
-            onClick={handleChange}
-            className={`mr-3 create-listing-button ${
-              !offer ? "bg-white text-black" : "bg-slate-600 text-white"
-            }`}
-          >
-            yes
-          </button>
-          <button
-            type="button"
-            id="offer"
-            value={false}
-            onClick={handleChange}
-            className={`ml-3 create-listing-button ${
-              offer ? "bg-white text-black" : "bg-slate-600 text-white"
-            }`}
-          >
-            no
-          </button>
-        </div>
         <div className="flex items-center mb-6">
           <div className="">
             <p className="text-lg font-semibold">Regular price</p>
@@ -437,32 +403,6 @@ export default function CreateListing() {
             </div>
           </div>
         </div>
-        {offer && (
-          <div className="flex items-center mb-6">
-            <div className="">
-              <p className="text-lg font-semibold">Discounted price</p>
-              <div className="flex w-full justify-center items-center space-x-6">
-                <input
-                  type="number"
-                  id="discountedPrice"
-                  value={discountedPrice}
-                  onChange={handleChange}
-                  min="50"
-                  max="400000000"
-                  required={offer}
-                  className="global-input text-center"
-                />
-                {type === "rent" && (
-                  <div className="">
-                    <p className="text-md w-full whitespace-nowrap">
-                      kr / Month
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        )}
         <div className="mb-6">
           <p className="text-lg font-semibold">Images</p>
           <p className="text-gray-600">

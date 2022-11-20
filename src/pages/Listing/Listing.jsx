@@ -54,6 +54,7 @@ export default function Listing() {
   return (
     <main>
       <Swiper
+        className="lg:max-w-6xl"
         slidesPerView={1}
         navigation
         pagination={{ type: "progressbar" }}

@@ -77,23 +77,19 @@ export default function Listing() {
 
       <div className="m-4 flex flex-col md:flex-row max-w-6xl lg:mx-auto p-4 rounded-lg shadow-lg bg-white lg:space-x-5">
         <div className=" w-full ">
-          <p className="text-2xl font-bold mb-3 text-blue-900">
-            {listing.name} -{" "}
+          <p className="text-3xl font-bold mb-3">{listing.name}</p>
+
+          <p className="flex items-center my-6  text-blue-900 font-semibold">
+            <FaMapMarkerAlt className="mr-1" />
+            {listing.address}
+          </p>
+          <p className="text-2xl font-semibold">
             {listing.regularPrice
               .toString()
               .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            {listing.type === "rent" ? "/month" : ""} kr
+            {listing.type === "rent" ? " kr/month" : " kr"}
           </p>
-          <p className="flex items-center mt-6 mb-3 font-semibold">
-            <FaMapMarkerAlt className="text-green-700 mr-1" />
-            {listing.address}
-          </p>
-          <div className="flex justify-between space-x-2">
-            <p className="bg-red-800 w-full max-w-[200px] rounded-md p-1 text-white text-center font-semibold shadow-md">
-              {listing.type === "rent" ? "For Rent" : "For Sale"}
-            </p>
-          </div>
-          <ul className="flex items-center space-x-2 sm:space-x-10 text-sm font-semibold  mt-3 mb-3">
+          <ul className="flex items-center space-x-2 sm:space-x-10 text-sm font-semibold my-6">
             <li className="listing-list">
               <FaBed className="text-lg mr-1" />
               {+listing.bedrooms > 1 ? `${listing.bedrooms} Beds` : "1 Bed"}

@@ -3,7 +3,19 @@ import { MdLocationOn, MdEdit } from "react-icons/md";
 import { FaTrash } from "react-icons/fa";
 import Moment from "react-moment";
 
-export default function ListingItem({ listing, id, handleEdit, handleDelete }) {
+interface Props {
+  listing: any;
+  id: string;
+  handleEdit?: (id: string) => void;
+  handleDelete?: (id: string) => void;
+}
+
+export const ListingItem = ({
+  listing,
+  id,
+  handleEdit,
+  handleDelete,
+}: Props) => {
   return (
     <li className="relative bg-white flex flex-col justify-between items-center shadow-md hover:shadow-xl rounded-md overflow-hidden transition-shadow duration-150 m-[10px]">
       <Link className="contents" to={`/category/${listing.type}/${id}`}>
@@ -63,4 +75,4 @@ export default function ListingItem({ listing, id, handleEdit, handleDelete }) {
       )}
     </li>
   );
-}
+};

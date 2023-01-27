@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { doc, getDoc } from "firebase/firestore";
 
 import { db } from "services/firebase";
 
-export default function Contact({ userRef, listing }) {
+interface Props {
+  userRef: string;
+  listing: any;
+}
+
+export const Contact = ({ userRef, listing }: Props) => {
   const [owner, setOwner] = useState(null);
   const [message, setMessage] = useState("");
 
@@ -21,7 +26,7 @@ export default function Contact({ userRef, listing }) {
     getOwner();
   }, [userRef]);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMessage(e.target.value);
   };
 
@@ -36,7 +41,7 @@ export default function Contact({ userRef, listing }) {
             <textarea
               name="message"
               id="message"
-              rows="2"
+              rows={2}
               value={message}
               onChange={handleChange}
               className="global-input"
@@ -56,4 +61,4 @@ export default function Contact({ userRef, listing }) {
       )}
     </>
   );
-}
+};

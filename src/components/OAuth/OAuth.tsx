@@ -6,7 +6,7 @@ import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
 
 import { db } from "services/firebase";
 
-export default function OAuth() {
+export const OAuth = () => {
   const navigate = useNavigate();
 
   const handleGoogleSignIn = async () => {
@@ -44,4 +44,4 @@ export default function OAuth() {
       Continue with Google
     </button>
   );
-}
+};

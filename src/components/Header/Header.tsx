@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-export default function Header() {
+export const Header = () => {
   const [header, setHeader] = useState(false);
   const [pageState, setPageState] = useState("Sign in");
 
@@ -21,7 +21,7 @@ export default function Header() {
     });
   }, [auth]);
 
-  const pathMatchRoute = (route) => {
+  const pathMatchRoute = (route: string) => {
     if (route === location.pathname) {
       return true;
     }
@@ -139,4 +139,4 @@ export default function Header() {
       </div>
     </nav>
   );
-}
+};

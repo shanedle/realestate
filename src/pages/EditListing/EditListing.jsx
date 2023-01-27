@@ -15,7 +15,7 @@ import { db } from "services/firebase";
 
 import Spinner from "components/Spinner";
 
-export default function CreateListing() {
+export default function EditListing() {
   const navigate = useNavigate();
 
   const auth = getAuth();
@@ -133,9 +133,13 @@ export default function CreateListing() {
         toast.error("Please enter a correct address.");
         return;
       }
+
+      setGeolocationEnabled(false);
     } else {
       geolocation.lat = latitude;
       geolocation.lng = longitude;
+
+      setGeolocationEnabled(true);
     }
 
     const storeImage = async (image) => {
@@ -159,6 +163,8 @@ export default function CreateListing() {
               case "running":
                 console.log("Upload is running.");
                 break;
+              default:
+                console.log("Uploading...");
             }
           },
           (error) => {

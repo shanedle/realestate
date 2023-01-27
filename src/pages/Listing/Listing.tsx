@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Key, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
   FaMapMarkerAlt,
@@ -62,7 +62,7 @@ export default function Listing() {
         modules={[EffectFade]}
         autoplay={{ delay: 3000 }}
       >
-        {listing.imgUrls.map((url, index) => (
+        {listing.imgUrls.map((url: string, index: Key) => (
           <SwiperSlide key={index}>
             <div
               className="relative w-full overflow-hidden h-[500px]"

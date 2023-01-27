@@ -10,11 +10,11 @@ import forgotPasswordImg from "assets/svg/undraw_forgot_password.svg";
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const auth = getAuth();

@@ -1,9 +1,8 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 import heroImg from "assets/jpg/naomi-ellsworth-unsplash.jpg";
 
-export default function IndexPage() {
+export const Hero = () => {
   return (
     <>
       <div className="mx-auto container px-6 xl:px-0 h-full">
@@ -38,4 +37,4 @@ export default function IndexPage() {
       </div>
     </>
   );
-}
+};

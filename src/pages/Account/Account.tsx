@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { FcHome } from "react-icons/fc";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getAuth, updateProfile } from "firebase/auth";
 import {
@@ -18,15 +17,25 @@ import { db } from "services/firebase";
 
 import ListingItem from "components/ListingItem";
 
+interface FormData {
+  name: string;
+  email: string;
+}
+
+interface Listing {
+  id: string;
+  data: any;
+}
+
 export default function Account() {
   const auth = getAuth();
 
   const navigate = useNavigate();
 
   const [changeDetail, setChangeDetail] = useState(false);
-  const [listings, setListings] = useState(null);
+  const [listings, setListings] = useState<Listing[] | null>(null);
   const [loading, setLoading] = useState(true);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: auth.currentUser.displayName,
     email: auth.currentUser.email,
   });
@@ -38,7 +47,7 @@ export default function Account() {
     navigate("/");
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.id]: e.target.value,
@@ -74,7 +83,7 @@ export default function Account() {
         orderBy("timestamp", "desc")
       );
       const querySnap = await getDocs(q);
-      let listings = [];
+      let listings: Listing[] = [];
       querySnap.forEach((doc) => {
         return listings.push({
           id: doc.id,
@@ -87,7 +96,7 @@ export default function Account() {
     fetchUserListings();
   }, [auth.currentUser.uid]);
 
-  const handleDelete = async (listingID) => {
+  const handleDelete = async (listingID: string) => {
     if (window.confirm("Are you sure you want to delete the listing?")) {
       await deleteDoc(doc(db, "listings", listingID));
       const updatedListings = listings.filter(
@@ -97,7 +106,7 @@ export default function Account() {
       toast.success("Successfully deleted the listing.");
     }
   };
-  const handleEdit = (listingID) => {
+  const handleEdit = (listingID: string) => {
     navigate(`/edit-listing/${listingID}`);
   };
 

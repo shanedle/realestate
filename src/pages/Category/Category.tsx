@@ -16,8 +16,13 @@ import { db } from "services/firebase";
 import Spinner from "components/Spinner";
 import ListingItem from "components/ListingItem";
 
+interface Listing {
+  id: string;
+  data: any;
+}
+
 export default function Category() {
-  const [listings, setListings] = useState(null);
+  const [listings, setListings] = useState<Listing[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [lastFetchedListing, setLastFetchListing] = useState(null);
 
@@ -36,7 +41,7 @@ export default function Category() {
         const querySnap = await getDocs(q);
         const lastVisible = querySnap.docs[querySnap.docs.length - 1];
         setLastFetchListing(lastVisible);
-        const listings = [];
+        const listings: Listing[] = [];
         querySnap.forEach((doc) => {
           return listings.push({
             id: doc.id,
@@ -66,7 +71,7 @@ export default function Category() {
       const querySnap = await getDocs(q);
       const lastVisible = querySnap.docs[querySnap.docs.length - 1];
       setLastFetchListing(lastVisible);
-      const listings = [];
+      const listings: Listing[] = [];
       querySnap.forEach((doc) => {
         return listings.push({
           id: doc.id,

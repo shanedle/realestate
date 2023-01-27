@@ -14,9 +14,14 @@ import { db } from "services/firebase";
 import Hero from "components/Hero";
 import ListingItem from "components/ListingItem";
 
+interface Listing {
+  id: string;
+  data: any;
+}
+
 export default function Home() {
   // Houses for rent
-  const [rentListings, setRentListings] = useState(null);
+  const [rentListings, setRentListings] = useState<Listing[] | null>(null);
   useEffect(() => {
     const fetchListings = async () => {
       try {
@@ -31,7 +36,7 @@ export default function Home() {
         );
         // execute the query
         const querySnap = await getDocs(q);
-        const listings = [];
+        const listings: Listing[] = [];
 
         querySnap.forEach((doc) => {
           return listings.push({
@@ -48,7 +53,7 @@ export default function Home() {
   }, []);
 
   // Houses for rent
-  const [saleListings, setSaleListings] = useState(null);
+  const [saleListings, setSaleListings] = useState<Listing[] | null>(null);
   useEffect(() => {
     const fetchListings = async () => {
       try {
@@ -63,7 +68,7 @@ export default function Home() {
         );
         // execute the query
         const querySnap = await getDocs(q);
-        const listings = [];
+        const listings: Listing[] = [];
 
         querySnap.forEach((doc) => {
           return listings.push({

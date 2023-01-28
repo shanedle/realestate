@@ -1,52 +1,18 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-import { toast } from "react-toastify";
-import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 
 import OAuth from "components/OAuth";
 
+import { useFormData } from "hooks/useFormData";
+import { useFormSignIn } from "hooks/useFormSubmit";
+
 import signInImg from "assets/svg/undraw_login.svg";
 
-interface FormData {
-  email: string;
-  password: string;
-}
-
 export default function SignIn() {
+  const { formData, handleChange } = useFormData();
+  const { handleSubmit } = useFormSignIn(formData);
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState<FormData>({
-    email: "",
-    password: "",
-  });
-
-  const { email, password } = formData;
-
-  const navigate = useNavigate();
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [e.target.id]: e.target.value,
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      const auth = getAuth();
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      if (userCredential.user) {
-        navigate("/");
-      }
-    } catch (error) {
-      toast.error("Bad user credentials.");
-    }
-  };
 
   return (
     <section>
@@ -60,7 +26,7 @@ export default function SignIn() {
             <input
               type="email"
               id="email"
-              value={email}
+              value={formData.email}
               onChange={handleChange}
               placeholder="Email"
               className="mb-6 signin-input"
@@ -69,7 +35,7 @@ export default function SignIn() {
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
-                value={password}
+                value={formData.password}
                 onChange={handleChange}
                 placeholder="Password"
                 className="signin-input"

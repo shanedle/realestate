@@ -1,70 +1,18 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-import { toast } from "react-toastify";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  updateProfile,
-} from "firebase/auth";
-import { doc, serverTimestamp, setDoc } from "firebase/firestore";
-
-import { db } from "services/firebase";
 
 import OAuth from "components/OAuth";
 
+import { useFormData } from "hooks/useFormData";
+import { useFormSignUp } from "hooks/useFormSubmit";
+
 import signInImg from "assets/svg/undraw_login.svg";
 
-interface FormData {
-  name: string;
-  email: string;
-  password: string;
-  timestamp?: any;
-}
-
 export default function SignUp() {
+  const { formData, handleChange } = useFormData();
+  const { handleSubmit } = useFormSignUp(formData);
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    password: "",
-  });
-
-  const { name, email, password } = formData;
-  const navigate = useNavigate();
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [e.target.id]: e.target.value,
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      const auth = getAuth();
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      updateProfile(auth.currentUser, {
-        displayName: name,
-      });
-      const user = userCredential.user;
-      const formDataCopy = { ...formData };
-
-      delete formDataCopy.password;
-      formDataCopy.timestamp = serverTimestamp();
-
-      await setDoc(doc(db, "users", user.uid), formDataCopy);
-      toast.success("Sign up was successful.");
-      navigate("/sign-in");
-    } catch (error) {
-      toast.error("Something went wrong with the registration.");
-    }
-  };
 
   return (
     <section>
@@ -78,7 +26,7 @@ export default function SignUp() {
             <input
               type="text"
               id="name"
-              value={name}
+              value={formData.name}
               onChange={handleChange}
               placeholder="Full name"
               className="mb-6 signin-input"
@@ -86,7 +34,7 @@ export default function SignUp() {
             <input
               type="email"
               id="email"
-              value={email}
+              value={formData.email}
               onChange={handleChange}
               placeholder="Email"
               className="mb-6 signin-input"
@@ -95,7 +43,7 @@ export default function SignUp() {
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
-                value={password}
+                value={formData.password}
                 onChange={handleChange}
                 placeholder="Password"
                 className="signin-input"

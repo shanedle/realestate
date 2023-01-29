@@ -57,12 +57,10 @@ export default function Account() {
   const handleSubmit = async () => {
     try {
       if (auth.currentUser.displayName !== name) {
-        //update display name in the firebase auth
         await updateProfile(auth.currentUser, {
           displayName: name,
         });
 
-        // update name in the firestore
         const docRef = doc(db, "users", auth.currentUser.uid);
         await updateDoc(docRef, {
           name,

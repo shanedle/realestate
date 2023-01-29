@@ -15,6 +15,8 @@ import { db } from "services/firebase";
 
 import Spinner from "components/Spinner";
 
+const MAX_IMAGES = 6;
+
 export default function EditListing() {
   const navigate = useNavigate();
 
@@ -80,25 +82,21 @@ export default function EditListing() {
   }, [navigate, params.listingId]);
 
   const handleChange = (e) => {
-    let boolean = null;
-    if (e.target.value === "true") {
-      boolean = true;
-    }
-    if (e.target.value === "false") {
-      boolean = false;
-    }
-    // Files
-    if (e.target.files) {
+    if (e.target.id === "images") {
+      if (e.target.files.length > MAX_IMAGES) {
+        toast.error(`Maximum ${MAX_IMAGES} images allowed.`);
+        return;
+      }
       setFormData((prevState) => ({
         ...prevState,
-        images: e.target.files,
+        [e.target.id]: e.target.files,
       }));
-    }
-    // Text/Boolean/Number
-    if (!e.target.files) {
+    } else if (e.target.id === "geolocationEnabled") {
+      setGeolocationEnabled(e.target.checked);
+    } else {
       setFormData((prevState) => ({
         ...prevState,
-        [e.target.id]: boolean ?? e.target.value,
+        [e.target.id]: e.target.value,
       }));
     }
   };
@@ -139,19 +137,17 @@ export default function EditListing() {
     }
 
     const storeImage = async (image) => {
+      const storage = getStorage();
+      const filename = `${auth.currentUser.uid}-${image.name}-${uuidv4()}`;
+      const storageRef = ref(storage, filename);
+      const uploadTask = uploadBytesResumable(storageRef, image);
       return new Promise((resolve, reject) => {
-        const storage = getStorage();
-        const filename = `${auth.currentUser.uid}-${image.name}-${uuidv4()}`;
-        const storageRef = ref(storage, filename);
-        const uploadTask = uploadBytesResumable(storageRef, image);
         uploadTask.on(
           "state_changed",
           (snapshot) => {
-            // Observe state change events such as progress, pause, and resume
-            // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
             const progress =
               (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log("Upload is " + progress + "% done");
+            console.log(`Upload is ${progress}% done`);
             switch (snapshot.state) {
               case "paused":
                 console.log("Upload is paused.");
@@ -164,27 +160,17 @@ export default function EditListing() {
             }
           },
           (error) => {
-            // Handle unsuccessful uploads
             reject(error);
           },
-          () => {
-            // Handle successful uploads on complete
-            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-              resolve(downloadURL);
-            });
+          async () => {
+            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+            resolve(downloadURL);
           }
         );
       });
     };
 
-    const imgUrls = await Promise.all(
-      [...images].map((image) => storeImage(image))
-    ).catch((error) => {
-      setLoading(false);
-      toast.error("Images failed to upload.");
-      return;
-    });
+    const imgUrls = await Promise.all([...images].map(storeImage));
 
     const formDataCopy = {
       ...formData,

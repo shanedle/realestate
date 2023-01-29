@@ -16,7 +16,6 @@ export const OAuth = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
 
-      // check for the user
       const docRef = doc(db, "users", user.uid);
       const docSnap = await getDoc(docRef);
 

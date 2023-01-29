@@ -25,16 +25,13 @@ export default function Home() {
   useEffect(() => {
     const fetchListings = async () => {
       try {
-        // get the reference
         const listingsRef = collection(db, "listings");
-        // create the query
         const q = query(
           listingsRef,
           where("type", "==", "rent"),
           orderBy("timestamp", "desc"),
           limit(4)
         );
-        // execute the query
         const querySnap = await getDocs(q);
         const listings: Listing[] = [];
 
@@ -52,21 +49,18 @@ export default function Home() {
     fetchListings();
   }, []);
 
-  // Houses for rent
+  // Houses for sale
   const [saleListings, setSaleListings] = useState<Listing[] | null>(null);
   useEffect(() => {
     const fetchListings = async () => {
       try {
-        // get the reference
         const listingsRef = collection(db, "listings");
-        // create the query
         const q = query(
           listingsRef,
           where("type", "==", "sale"),
           orderBy("timestamp", "desc"),
           limit(4)
         );
-        // execute the query
         const querySnap = await getDocs(q);
         const listings: Listing[] = [];
 

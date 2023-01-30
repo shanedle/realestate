@@ -9,7 +9,7 @@ import {
   where,
 } from "firebase/firestore";
 
-import { db } from "services/firebase";
+import { db } from "lib/firebase";
 
 import Hero from "components/Hero";
 import ListingItem from "components/ListingItem";

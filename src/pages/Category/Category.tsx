@@ -11,7 +11,7 @@ import {
   where,
 } from "firebase/firestore";
 
-import { db } from "services/firebase";
+import { db } from "lib/firebase";
 
 import Spinner from "components/Spinner";
 import ListingItem from "components/ListingItem";

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { doc, getDoc } from "firebase/firestore";
 
-import { db } from "services/firebase";
+import { db } from "lib/firebase";
 
 interface Props {
   userRef: string;

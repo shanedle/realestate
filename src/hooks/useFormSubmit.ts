@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 
-import { db } from "services/firebase";
+import { db } from "lib/firebase";
 
 interface FormData {
   name: string;

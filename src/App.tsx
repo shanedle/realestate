@@ -2,18 +2,18 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import Home from "./pages/Home";
-import Account from "./pages/Account";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp/SignUp";
-import ForgotPassword from "./pages/ForgotPassword";
-import PrivateRoute from "./components/PrivateRoute";
-import Category from "./pages/Category";
-import Listing from "./pages/Listing";
-import CreateListing from "./pages/CreateListing";
-import EditListing from "./pages/EditListing";
+import Header from "components/Header";
+import PrivateRoute from "components/PrivateRoute";
 
-import Header from "./components/Header";
+import Home from "pages/Home";
+import Account from "pages/Account";
+import SignIn from "pages/SignIn";
+import SignUp from "pages/SignUp/SignUp";
+import ForgotPassword from "pages/ForgotPassword";
+import Category from "pages/Category";
+import Listing from "pages/Listing";
+import CreateListing from "pages/CreateListing";
+import EditListing from "pages/EditListing";
 
 export default function App() {
   return (

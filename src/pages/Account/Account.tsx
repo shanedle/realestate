@@ -13,7 +13,7 @@ import {
   where,
 } from "firebase/firestore";
 
-import { db } from "services/firebase";
+import { db } from "lib/firebase";
 
 import ListingItem from "components/ListingItem";
 

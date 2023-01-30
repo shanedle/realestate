@@ -19,7 +19,7 @@ import "swiper/css/bundle";
 import { getAuth } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 
-import { db } from "services/firebase";
+import { db } from "lib/firebase";
 
 import Spinner from "components/Spinner";
 import Contact from "components/Contact";

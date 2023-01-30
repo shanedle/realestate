@@ -11,7 +11,7 @@ import {
 } from "firebase/storage";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
-import { db } from "services/firebase";
+import { db } from "lib/firebase";
 
 import Spinner from "components/Spinner";
 

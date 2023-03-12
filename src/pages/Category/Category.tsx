@@ -3,10 +3,12 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import {
   collection,
+  DocumentData,
   getDocs,
   limit,
   orderBy,
   query,
+  QueryDocumentSnapshot,
   startAfter,
   where,
 } from "firebase/firestore";
@@ -24,8 +26,8 @@ interface Listing {
 export default function Category() {
   const [listings, setListings] = useState<Listing[] | null>(null);
   const [loading, setLoading] = useState(true);
-  const [lastFetchedListing, setLastFetchListing] = useState(null);
-
+  const [lastFetchedListing, setLastFetchListing] =
+    useState<QueryDocumentSnapshot<DocumentData> | null>(null);
   const params = useParams();
 
   useEffect(() => {
